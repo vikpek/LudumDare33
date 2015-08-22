@@ -1,0 +1,23 @@
+
+Attacking		|Defending	|
+----------------|-----------|
+DAMAGE			| HP		|
+RANGE			| SPEED		|
+RATE			| COUNT		|
+	
+
+
+
+
+Hardcore TD - Construct your own firewall against attacks. Generate defense perimeters at your own will:
+
+
+Resources CPU left: 13%
+agent012$ defender { range: 12%; damage: 54%; }
+
+
+Firewall basis on router plan. Transistor blueprints are levels.
+
+
+
+
