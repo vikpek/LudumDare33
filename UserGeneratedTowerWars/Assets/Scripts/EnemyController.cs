@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using SplineTool;
+using System.Collections;
 
 public class EnemyController : ExtendedMonoBehaviour
 {
@@ -13,19 +13,30 @@ public class EnemyController : ExtendedMonoBehaviour
 
     private TextMesh[] textIntels;
     private int textIntelCount = 1;
+    
+    private ArrayList waypoints;
+
+    private GameObject closestWaypoint;
 
     void Start()
     {
         textIntels = InitiateIntel(textIntelCount, textIntels);
-        //  GetComponent<FollowSpline>().SetSpline(GameObject.FindGameObjectWithTag("Spline").GetComponent<SplineWindow>()); 
-
+        //  GetComponent<FollowSpline>().SetSpline(GameObject.FindGameObjectWithTag("Spline").GetComponent<SplineWindow>());
+        
+         waypoints = new ArrayList();
+         foreach(GameObject waypoint in GameObject.FindGameObjectsWithTag("Waypoint")){
+             waypoints.Add(waypoint);
+         }
+         FindNearestWaypoint();
     }
 
     // Update is called once per frame
     void Update()
     {
         textIntels[0].text = "HP" + healthPoints;
-        move();
+        Move();
+        FindNearestWaypoint();
+        RemoveReachedWaypoint();
     }
 
     void TakeDamageSubstraction(float damage)
@@ -35,17 +46,30 @@ public class EnemyController : ExtendedMonoBehaviour
         {
             SelfDesctructionProcedure();
         }
+        
+        AudioMaster.instance.playEnemyHit();
     }
 
-    void move()
+    void Move()
     {
-         transform.position = Vector3.MoveTowards(transform.position, transform.position + Vector3.right, movementSpeed);
+         transform.position = Vector3.MoveTowards(transform.position, closestWaypoint.transform.position, movementSpeed);
     }
 
     void SelfDesctructionProcedure()
     {
         print("Enemy destroyed");
         Destroy(gameObject);
+        
+        spawnFractiles();
+        AudioMaster.instance.playEnemyDestruction();
+    }
+    
+    void spawnFractiles(){
+       
+        GameObject fractile = (GameObject)Resources.Load(ResourcePaths.FRACTILE_PATH);
+        fractile.transform.position = transform.position;
+        
+        Instantiate(fractile);
     }
 
 
@@ -54,6 +78,24 @@ public class EnemyController : ExtendedMonoBehaviour
         if (other.tag == Tags.PROJECTILE)
         {
             TakeDamageSubstraction(other.GetComponent<ProjectileController>().damage);
+        }
+    }
+    
+    void FindNearestWaypoint(){
+        float distance = float.MaxValue;
+        foreach(GameObject waypoint in waypoints){
+            float tmpDistance = Vector2.Distance(waypoint.transform.position, transform.position);
+            if(tmpDistance < distance){
+                closestWaypoint = waypoint;
+                distance = tmpDistance;
+            }
+        }
+    }
+    
+    void RemoveReachedWaypoint()
+    {
+        if(Vector2.Distance(closestWaypoint.transform.position, transform.position) < 0.1){
+            waypoints.Remove(closestWaypoint);
         }
     }
 }

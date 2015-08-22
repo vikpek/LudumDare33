@@ -19,7 +19,7 @@ public class ProjectileController : ExtendedMonoBehaviour {
 	void Start () {
 		calculations += calculateLifetime;
 		calculations += calculateMovement;
-		calculations += calculationPrintOut;
+		//  calculations += calculationPrintOut;
 	}
 
 	void Update () {

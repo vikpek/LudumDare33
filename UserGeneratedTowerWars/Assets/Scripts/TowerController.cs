@@ -47,6 +47,8 @@ public class TowerController : ExtendedMonoBehaviour
             projectile.GetSafeComponent<ProjectileController>().damage = fireDamage;
             projectile.transform.position = gameObject.transform.position;
             Instantiate(projectile);
+            
+            AudioMaster.instance.playTowerShot();
         }
     }
 
