@@ -31,4 +31,6 @@ public class ResourcePaths {
 	public static string TOWER_SHOT_CLIP_PATH = "Sounds/t3sound";
 	public static string ENEMY_HIT_CLIP_PATH = "Sounds/enemy_hit2";
 	
+	public static string ENEMY_DEATH_CLIPS = "Sounds/EnemyDeathClips";
+	
 }

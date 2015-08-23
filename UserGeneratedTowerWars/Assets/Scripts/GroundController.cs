@@ -3,20 +3,11 @@ using System.Collections;
 
 public class GroundController : ExtendedMonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
-	
 	void OnMouseUpAsButton() {
 		
+		
         int currentTower = GameObject.FindGameObjectWithTag(Tags.GAME_CONTROLLER).GetComponent<TowerSelection>().GetCurrentTower();
+		
 		GameObject tower = null;
 		switch (currentTower)
 		{
@@ -34,8 +25,11 @@ public class GroundController : ExtendedMonoBehaviour {
 		if(tower){
 			Vector3 tmp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			tmp.z = 0;
-			tower.transform.position = gameObject.transform.position; 
+			tower.transform.position = gameObject.transform.position;
+			
 			Instantiate(tower);
+			
+			GameObject.FindGameObjectWithTag(Tags.GAME_CONTROLLER).GetComponent<GameController>().DecreaseCash(currentTower);
 		}
     }
 }

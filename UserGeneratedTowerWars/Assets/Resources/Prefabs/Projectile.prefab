@@ -45,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.500122726, y: .72950387, z: 0}
+  m_LocalPosition: {x: .341918945, y: -.0504760742, z: 0}
   m_LocalScale: {x: .114960708, y: .114960626, z: .114960626}
   m_Children:
   - {fileID: 492044}
@@ -135,7 +135,7 @@ MonoBehaviour:
   damage: 101
   speed: .300000012
   origin: {fileID: 0}
-  destination: {x: -.332982749, y: .294582158, z: 0}
+  destination: {x: -.156468794, y: .275335312, z: 0}
 --- !u!135 &13581820
 SphereCollider:
   m_ObjectHideFlags: 1

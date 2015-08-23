@@ -6,14 +6,21 @@ public class SpawnerController : MonoBehaviour {
     [SerializeField]
     private float spawnDuration = 2f;
     
+    [SerializeField]
+    private float spawnStart = 2f;
+    	
+    [SerializeField]
+    private GameObject enemy;
+    
  	void LaunchEnemy() {
-        GameObject enemy = (GameObject)Resources.Load(ResourcePaths.ENEMY_PATH);
+        
         enemy.transform.position = transform.position;
         
         Instantiate(enemy);
     }
 	
     void Start() {
-        InvokeRepeating("LaunchEnemy", 0, spawnDuration);
+        InvokeRepeating("LaunchEnemy", spawnStart, spawnDuration);
+        
     }
 }

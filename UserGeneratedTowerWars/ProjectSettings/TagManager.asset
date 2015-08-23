@@ -17,6 +17,8 @@ TagManager:
   - Tower1Button
   - Tower2Button
   - Tower3Button
+  - ActualScene
+  - EndScene
   layers:
   - Default
   - TransparentFX

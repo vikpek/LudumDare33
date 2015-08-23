@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TowerSelection : ExtendedMonoBehaviour {
 
-	private int currentTower;
+	private int currentTower = 1;
 
 	// Use this for initialization
 	void Start () {
