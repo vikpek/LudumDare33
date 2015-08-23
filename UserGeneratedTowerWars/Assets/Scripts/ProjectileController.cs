@@ -6,11 +6,13 @@ public class ProjectileController : ExtendedMonoBehaviour {
 	
 	public float damage;
 	
+	public float speed = 0.3f;
+	
 	public GameObject origin;
 	
 	public Vector3 destination;
 	
-	public float speed = 0.3f;
+	
 
 	delegate void Calculations();
 	Calculations calculations;

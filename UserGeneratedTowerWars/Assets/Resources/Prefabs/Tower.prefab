@@ -25,9 +25,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153710}
-  m_LocalRotation: {x: 0, y: 0, z: -.377538204, w: .925994039}
-  m_LocalPosition: {x: 1.27808213, y: 2.88298893, z: 0}
-  m_LocalScale: {x: .473227829, y: .480952352, z: .525407076}
+  m_LocalRotation: {x: 0, y: 0, z: -.705107808, w: .709100187}
+  m_LocalPosition: {x: -2.90712261, y: .707503915, z: 0}
+  m_LocalScale: {x: .164958134, y: .167650759, z: .183146834}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireDamage: .699999988
-  fireRange: 10
+  fireRange: 5
   fireRate: .0399999991
 --- !u!1001 &100100000
 Prefab:
@@ -102,6 +102,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: fireRate
       value: .0399999991
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireRange
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

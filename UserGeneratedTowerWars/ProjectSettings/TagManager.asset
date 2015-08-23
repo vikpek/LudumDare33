@@ -10,6 +10,13 @@ TagManager:
   - Projectile
   - Spline
   - Waypoint
+  - Goal
+  - CashText
+  - PointsText
+  - LifesText
+  - Tower1Button
+  - Tower2Button
+  - Tower3Button
   layers:
   - Default
   - TransparentFX

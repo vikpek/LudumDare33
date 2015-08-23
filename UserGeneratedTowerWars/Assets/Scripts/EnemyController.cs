@@ -17,6 +17,8 @@ public class EnemyController : ExtendedMonoBehaviour
     private ArrayList waypoints;
 
     private GameObject closestWaypoint;
+    [SerializeField]
+    private bool showIntelActivated = false;
 
     void Start()
     {
@@ -33,10 +35,19 @@ public class EnemyController : ExtendedMonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textIntels[0].text = "HP" + healthPoints;
+        if(showIntelActivated){
+        ShowIntel();
+        }
+        
         Move();
+        //  Rotate();
         FindNearestWaypoint();
         RemoveReachedWaypoint();
+    }
+    
+    void ShowIntel()
+    {
+        textIntels[0].text = "HP" + healthPoints;
     }
 
     void TakeDamageSubstraction(float damage)
@@ -54,6 +65,15 @@ public class EnemyController : ExtendedMonoBehaviour
     {
          transform.position = Vector3.MoveTowards(transform.position, closestWaypoint.transform.position, movementSpeed);
     }
+    
+    void Rotate()
+    {
+        Vector2 targetDir = closestWaypoint.transform.position - transform.position;
+        float step = 1f * Time.deltaTime;
+        Vector2 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
+        Debug.DrawRay(transform.position, newDir, Color.red);
+        transform.rotation = Quaternion.LookRotation(newDir);
+    }
 
     void SelfDesctructionProcedure()
     {
@@ -62,6 +82,10 @@ public class EnemyController : ExtendedMonoBehaviour
         
         spawnFractiles();
         AudioMaster.instance.playEnemyDestruction();
+        
+        GameObject.FindGameObjectWithTag(Tags.GAME_CONTROLLER).GetComponent<GameController>().IncreaseCash(10);
+        GameObject.FindGameObjectWithTag(Tags.GAME_CONTROLLER).GetComponent<GameController>().IncreasePoints(100);
+       
     }
     
     void spawnFractiles(){
@@ -75,9 +99,15 @@ public class EnemyController : ExtendedMonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        
         if (other.tag == Tags.PROJECTILE)
         {
             TakeDamageSubstraction(other.GetComponent<ProjectileController>().damage);
+        }
+        
+        if(other.tag == Tags.GOAL){
+            GameObject.FindGameObjectWithTag(Tags.GAME_CONTROLLER).GetComponent<GameController>().DecreaseLife();
+            Destroy(gameObject);
         }
     }
     
