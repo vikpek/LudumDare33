@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153710}
   m_LocalRotation: {x: 0, y: 0, z: -.705107808, w: .709100187}
-  m_LocalPosition: {x: -.500122726, y: .72950387, z: 0}
+  m_LocalPosition: {x: .330932617, y: .708496094, z: 0}
   m_LocalScale: {x: .098219052, y: .0998222828, z: 1.0967052}
   m_Children: []
   m_Father: {fileID: 0}
@@ -70,7 +70,7 @@ BoxCollider:
   m_GameObject: {fileID: 153710}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -112,6 +112,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3445b0a130c8d4bf68b2c287ca762e45, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153710}

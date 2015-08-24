@@ -28,6 +28,10 @@ public class GameController : MonoBehaviour
     
     GameObject endScene;
     GameObject actualScene;
+    
+    int phaseCounter = 1;
+
+
 
 
     void Start()
@@ -43,7 +47,27 @@ public class GameController : MonoBehaviour
         tower3 = GameObject.FindGameObjectWithTag(Tags.TOWER3_BUTTON).GetComponent<Button>();
         UpdateCashUI();
         UpdateLifeUI();
+        UpdatePhaseUI();
+        InvokeRepeating("NewWave", 20, 25);
 
+    }
+
+
+    void NewWave() {
+        phaseCounter ++;
+        UpdatePhaseUI();
+    }
+    void Example() {
+        
+    }
+    public int GetPhaseCount()
+    {
+        return phaseCounter;
+    }
+
+    void UpdatePhaseUI(){
+        
+        GameObject.FindGameObjectWithTag("WaveText").GetComponent<Text>().text = phaseCounter + "";
     }
 
     public void IncreasePoints(int value)

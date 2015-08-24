@@ -85,7 +85,6 @@ public class EnemyController : ExtendedMonoBehaviour
         spawnFractiles();
         AudioMaster.instance.playEnemyDestruction();
 
-        print(gameObject.name);
         if (gameObject.name == "EnemyBig(Clone)")
         {
             GameObject.FindGameObjectWithTag(Tags.GAME_CONTROLLER).GetComponent<GameController>().IncreaseCash(400);

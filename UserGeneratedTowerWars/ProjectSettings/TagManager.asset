@@ -19,6 +19,7 @@ TagManager:
   - Tower3Button
   - ActualScene
   - EndScene
+  - WaveText
   layers:
   - Default
   - TransparentFX
